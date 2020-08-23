@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Rector\TypeDeclaration;
 
+use PHPStan\Type\Accessory\NonEmptyArrayType;
 use PHPStan\Type\ArrayType;
 use PHPStan\Type\Constant\ConstantArrayType;
 use PHPStan\Type\NeverType;
@@ -126,6 +127,10 @@ final class TypeNormalizer
 
         $nonNeverTypes = [];
         foreach ($type->getTypes() as $unionedType) {
+            if ($unionedType instanceof NonEmptyArrayType) {
+                continue;
+            }
+
             if (! $unionedType instanceof ArrayType) {
                 return $type;
             }

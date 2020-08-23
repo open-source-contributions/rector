@@ -11,8 +11,7 @@ use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use PHPStan\PhpDocParser\Ast\Type\UnionTypeNode;
 use PHPStan\Type\ArrayType;
-use PHPStan\Type\Constant\ConstantArrayType;
-use PHPStan\Type\Constant\ConstantIntegerType;
+use PHPStan\Type\IntegerType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\NeverType;
 use PHPStan\Type\Type;
@@ -123,23 +122,11 @@ final class ArrayTypeMapper implements TypeMapperInterface
             return false;
         }
 
-        // make sure the integer key type is not natural/implicit array int keys
-        $keysArrayType = $arrayType->getKeysArray();
-        if (! $keysArrayType instanceof ConstantArrayType) {
-            return true;
+        if ($arrayType->getKeyType() instanceof IntegerType) {
+            return false;
         }
 
-        foreach ($keysArrayType->getValueTypes() as $key => $keyType) {
-            if (! $keyType instanceof ConstantIntegerType) {
-                return true;
-            }
-
-            if ($key !== $keyType->getValue()) {
-                return true;
-            }
-        }
-
-        return false;
+        return true;
     }
 
     private function createGenericArrayType(Type $keyType, TypeNode $itemTypeNode): AttributeAwareGenericTypeNode

@@ -11,6 +11,7 @@ use PHPStan\Type\Constant\ConstantIntegerType;
 use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\FloatType;
 use PHPStan\Type\IntegerType;
+use PHPStan\Type\IntersectionType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\StringType;
@@ -91,7 +92,7 @@ final class TypeFactory
         // unwrap union types
         $unwrappedTypes = [];
         foreach ($types as $key => $type) {
-            if ($type instanceof UnionType) {
+            if ($type instanceof UnionType || $type instanceof IntersectionType) {
                 $unwrappedTypes = $type->getTypes();
 
                 unset($types[$key]);
