@@ -91,7 +91,7 @@ final class TypeNormalizer
             $typeHash = $this->typeHasher->createTypeHash($valueType);
 
             $valueType = $this->uniqueateConstantArrayType($valueType);
-            $valueType = $this->normalizeArrayOfUnionToUnionArray($valueType);
+//            $valueType = $this->normalizeArrayOfUnionToUnionArray($valueType);
 
             if (! isset($uniqueTypes[$typeHash])) {
                 $uniqueTypes[$typeHash] = $valueType;
