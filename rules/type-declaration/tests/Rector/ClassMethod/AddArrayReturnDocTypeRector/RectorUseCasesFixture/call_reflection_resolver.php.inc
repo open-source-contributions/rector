@@ -28,6 +28,7 @@ class CallReflectionResolverFixture
     private function resolveMethodCall(Node $node): ?MethodReflection
     {
     }
+
 }
 ?>
 -----
@@ -43,7 +44,7 @@ use PHPStan\Reflection\MethodReflection;
 class CallReflectionResolverFixture
 {
     /**
-     * @return \PHPStan\Reflection\MethodReflection|\PHPStan\Reflection\FunctionReflection|null
+     * @return \PHPStan\Reflection\FunctionReflection|\PHPStan\Reflection\MethodReflection|null
      */
     public function resolveCall(Node $node)
     {
@@ -53,5 +54,17 @@ class CallReflectionResolverFixture
 
         return $this->resolveMethodCall($node);
     }
+
+    /**
+     * @return FunctionReflection|MethodReflection|null
+     */
+    private function resolveFunctionCall(FuncCall $funcCall)
+    {
+    }
+
+    private function resolveMethodCall(Node $node): ?MethodReflection
+    {
+    }
+
 }
 ?>
