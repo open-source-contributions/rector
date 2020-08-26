@@ -1,6 +1,6 @@
 <?php
 
-namespace Rector\TypeDeclaration\Tests\Rector\ClassMethod\AddArrayReturnDocTypeRector\RectorUseCasesFixture;
+namespace Rector\TypeDeclaration\Tests\Rector\ClassMethod\AddArrayReturnDocTypeRector\Fixture;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassLike;
@@ -22,12 +22,12 @@ class TrueValueUnionType
 -----
 <?php
 
-namespace Rector\TypeDeclaration\Tests\Rector\ClassMethod\AddArrayReturnDocTypeRector\RectorUseCasesFixture;
+namespace Rector\TypeDeclaration\Tests\Rector\ClassMethod\AddArrayReturnDocTypeRector\Fixture;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassLike;
 
-class TrueUnionType
+class TrueValueUnionType
 {
     /**
      * @return array<int|string|bool>
