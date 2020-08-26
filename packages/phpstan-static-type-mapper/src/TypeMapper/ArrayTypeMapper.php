@@ -121,7 +121,7 @@ final class ArrayTypeMapper implements TypeMapperInterface
         if ($arrayType->getKeyType() instanceof NeverType) {
             return false;
         }
-        return !$arrayType->getKeyType() instanceof IntegerType;
+        return ! $arrayType->getKeyType() instanceof IntegerType;
     }
 
     private function createGenericArrayType(Type $keyType, TypeNode $itemTypeNode): AttributeAwareGenericTypeNode
