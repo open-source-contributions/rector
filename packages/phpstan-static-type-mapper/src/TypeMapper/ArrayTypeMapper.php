@@ -58,9 +58,9 @@ final class ArrayTypeMapper implements TypeMapperInterface
     {
         $itemTypeNode = $this->phpStanStaticTypeMapper->mapToPHPStanPhpDocTypeNode($type->getItemType());
 
-        if ($itemTypeNode instanceof UnionTypeNode) {
-            return $this->convertUnionArrayTypeNodesToArrayTypeOfUnionTypeNodes($itemTypeNode);
-        }
+//        if ($itemTypeNode instanceof UnionTypeNode) {
+//            return $this->convertUnionArrayTypeNodesToArrayTypeOfUnionTypeNodes($itemTypeNode);
+//        }
 
         if ($this->isGenericArrayCandidate($type)) {
             return $this->createGenericArrayType($type->getKeyType(), $itemTypeNode);
